@@ -1,4 +1,10 @@
-# Setup
+# Setup and run using just Dockerfile
+
+docker build -t my-node-app -f arch/node/Dockerfile .
+docker run -it --name my-node-app-container -e PORT=80 -p 80:80 my-node-app
+open localhost:80
+
+# Dev
 
 docker network create address_parse || true
 
@@ -18,3 +24,4 @@ npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/node-
 
 ## zerodep-address
 npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/zerodep-address.test.ts
+
