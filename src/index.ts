@@ -11,14 +11,21 @@ class ApiController {
   ): Promise<any> {
     const lib = body.lib || 'node-postal';
 
+    let parsed;
+
     if (lib === 'node-postal') {
-      return parseWithNodePostal(body.address);
+      parsed = parseWithNodePostal(body.address);
     } else if (lib === '@zerodep/address') {
-      return parseWithZerodep(body.address);
+      parsed = parseWithZerodep(body.address);
     } else if (lib === 'moneals/addresser') {
-      return parseWithMoneals(body.address);
+      parsed = parseWithMoneals(body.address);
     } else {
       return {error: 'Unknown library'};
+    }
+
+    return {
+      from: body.address,
+      to: parsed,
     }
   }
 }
@@ -49,12 +56,22 @@ const parseWithMoneals = (address: string) => {
   }
 }
 
-export async function main(options: object = {}) {
-  const app = new RestApplication(options);
+export async function main(options: any = {}) {
+  const app = new RestApplication({
+    rest: {
+      port: 3333,
+      ...(options.rest || {}),
+    },
+    ...options,
+  });
+
   app.controller(ApiController);
+
   app.static('/', path.join(__dirname, '../public'));
+
   await app.start();
-  console.log(`Server is running at http://localhost:3000`);
+
+  console.log(`Server is running at http://localhost:3333`);
 }
 
 if (require.main === module) {
