@@ -4,6 +4,8 @@ services:
       context: ../
       dockerfile: arch/node/Dockerfile
     container_name: address_parse_node
+    ports:
+      - "3000:3000"
     volumes:
       - ../:/app
     environment:
@@ -11,8 +13,7 @@ services:
     networks:
       - address_parse
     working_dir: /app
-    # Keep the container running
-    command: [ "tail", "-f", "/dev/null" ]
+    command: ["npx", "ts-node-dev", "--respawn", "src/index.ts"]
 
 networks:
   address_parse:

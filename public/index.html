@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Address parse</title>
+</head>
+<body>
+<form id="apiForm">
+    <input
+        type="text"
+        id="address"
+        autofocus
+        placeholder="Enter address"
+        required
+        style="width: 600px;"
+    />
+    <select id="lib" required>
+        <option value="node-postal">node-postal</option>
+        <option value="@zerodep/address">@zerodep/address</option>
+    </select>
+    <button type="submit">Submit</button>
+</form>
+<pre id="output"></pre>
+<script>
+  document.getElementById('apiForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:3000/api', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          address: document.getElementById('address').value,
+          lib: document.getElementById('lib').value
+        })
+      });
+      const data = await response.json();
+      document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+    } catch (err) {
+      document.getElementById('output').textContent = 'Error: ' + err;
+    }
+  });
+</script>
+</body>
+</html>
