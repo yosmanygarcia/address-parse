@@ -30,8 +30,18 @@ RUN apt-get install -y --no-install-recommends \
 # Install node-gyp globally
 RUN npm install -g node-gyp
 
-# Set user
-USER node
-
 # Setup app directory
 WORKDIR /app
+
+# Install all dependencies (including devDependencies)
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+RUN npm run build
+
+# Optionally remove devDependencies after build
+RUN npm prune --production
+
+# Set user
+USER node

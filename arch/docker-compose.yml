@@ -5,7 +5,7 @@ services:
       dockerfile: arch/node/Dockerfile
     container_name: address_parse_node
     ports:
-      - "3000:3000"
+      - "0.0.0.0:3333:3333"
     volumes:
       - ../:/app
     environment:
