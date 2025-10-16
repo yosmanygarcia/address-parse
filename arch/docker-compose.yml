@@ -1,0 +1,19 @@
+services:
+  node:
+    build:
+      context: ../
+      dockerfile: arch/node/Dockerfile
+    container_name: address_parse_node
+    volumes:
+      - ../:/app
+    environment:
+      - NODE_ENV=development
+    networks:
+      - address_parse
+    working_dir: /app
+    # Keep the container running
+    command: [ "tail", "-f", "/dev/null" ]
+
+networks:
+  address_parse:
+        driver: bridge

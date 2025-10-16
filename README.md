@@ -1,0 +1,20 @@
+# Setup
+
+docker network create address_parse || true
+
+docker-compose \
+-f arch/docker-compose.yml \
+-p address_parse up \
+--force-recreate --remove-orphans
+
+docker exec -it address_parse_node bash
+
+npm i
+
+# Tests
+
+## node-postal
+npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/node-postal.test.ts
+
+## zerodep-address
+npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/zerodep-address.test.ts
