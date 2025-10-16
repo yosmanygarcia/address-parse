@@ -1,8 +1,14 @@
 # Setup and run using just Dockerfile
 
 docker build -t my-node-app -f arch/node/Dockerfile .
+
 docker run -it --name my-node-app-container -e PORT=80 -p 80:80 my-node-app
+
 open localhost:80
+
+## Start again after stopping
+
+docker start -ai my-node-app-container
 
 # Dev
 
@@ -20,8 +26,10 @@ npm i
 # Tests
 
 ## node-postal
+
 npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/node-postal.test.ts
 
 ## zerodep-address
+
 npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/zerodep-address.test.ts
 
