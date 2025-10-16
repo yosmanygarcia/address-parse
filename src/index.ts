@@ -56,6 +56,15 @@ const parseWithMoneals = (address: string) => {
   }
 }
 
+process.on('SIGINT', () => {
+  console.log('Received SIGINT. Exiting...');
+  process.exit(0);
+});
+process.on('SIGTERM', () => {
+  console.log('Received SIGTERM. Exiting...');
+  process.exit(0);
+});
+
 export async function main(options: any = {}) {
   const port = process.env.PORT ? Number(process.env.PORT) : 3333;
 
