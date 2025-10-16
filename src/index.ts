@@ -2,6 +2,7 @@ import {RestApplication, post, requestBody} from '@loopback/rest';
 import * as path from 'path';
 import postal from 'node-postal';
 import {addressParse} from '@zerodep/address';
+import * as addresser from "addresser";
 
 class ApiController {
   @post('/api')
@@ -14,8 +15,10 @@ class ApiController {
       return parseWithNodePostal(body.address);
     } else if (lib === '@zerodep/address') {
       return parseWithZerodep(body.address);
+    } else if (lib === 'moneals/addresser') {
+      return parseWithMoneals(body.address);
     } else {
-      throw new Error('Unknown library');
+      return {error: 'Unknown library'};
     }
   }
 }
@@ -33,6 +36,17 @@ const parseWithNodePostal = (address: string) => {
 
 const parseWithZerodep = (address: string) => {
   return addressParse(address);
+}
+
+const parseWithMoneals = (address: string) => {
+  try {
+    return addresser.parseAddress(address);
+  } catch (e) {
+    return {
+      error: 'Failed to parse address',
+      details: e,
+    };
+  }
 }
 
 export async function main(options: object = {}) {
