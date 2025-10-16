@@ -3,6 +3,7 @@ import * as path from 'path';
 import postal from 'node-postal';
 import {addressParse} from '@zerodep/address';
 import * as addresser from "addresser";
+import {parseAddress} from './parse'
 
 class ApiController {
   @post('/api')
@@ -19,6 +20,8 @@ class ApiController {
       parsed = parseWithZerodep(body.address);
     } else if (lib === 'moneals/addresser') {
       parsed = parseWithMoneals(body.address);
+    } else if (lib === 'custom') {
+      parsed = parseWithCustom(body.address);
     } else {
       return {error: 'Unknown library'};
     }
@@ -54,6 +57,10 @@ const parseWithMoneals = (address: string) => {
       details: e,
     };
   }
+}
+
+const parseWithCustom = (address: string) => {
+  return parseAddress(address);
 }
 
 process.on('SIGINT', () => {

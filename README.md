@@ -33,3 +33,6 @@ npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/node-
 
 npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/zerodep-address.test.ts
 
+## custom
+
+npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/custom.test.ts
