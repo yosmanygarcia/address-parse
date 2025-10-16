@@ -45,3 +45,5 @@ RUN npm prune --production
 
 # Set user
 USER node
+
+CMD ["node", "dist/index.js"]

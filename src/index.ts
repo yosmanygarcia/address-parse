@@ -57,9 +57,11 @@ const parseWithMoneals = (address: string) => {
 }
 
 export async function main(options: any = {}) {
+  const port = process.env.PORT ? Number(process.env.PORT) : 3333;
+
   const app = new RestApplication({
     rest: {
-      port: 3333,
+      port: port,
       ...(options.rest || {}),
     },
     ...options,
@@ -71,7 +73,7 @@ export async function main(options: any = {}) {
 
   await app.start();
 
-  console.log(`Server is running at http://localhost:3333`);
+  console.log(`Server is running at http://localhost:${port}`);
 }
 
 if (require.main === module) {
