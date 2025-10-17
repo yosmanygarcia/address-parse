@@ -4,9 +4,9 @@ export const data = [
     parsed: {
       house_number: '123',
       road: 'main st',
-      city: undefined,
-      state: undefined,
-      postcode: undefined,
+      city: null,
+      state: null,
+      postcode: null,
       unit: '#4'
     }
   },
@@ -28,8 +28,8 @@ export const data = [
       road: 'state route 50',
       city: 'mound house',
       state: 'nv',
-      postcode: undefined,
-      unit: undefined
+      postcode: null,
+      unit: null
     }
   },
   {
@@ -39,8 +39,8 @@ export const data = [
       road: 'n. 44th dr.',
       city: 'phoenix',
       state: 'az',
-      postcode: undefined,
-      unit: undefined
+      postcode: null,
+      unit: null
     }
   },
   {
@@ -49,9 +49,9 @@ export const data = [
       house_number: '12-14',
       road: 'main st',
       city: 'anytown',
-      state: undefined,
-      postcode: undefined,
-      unit: undefined
+      state: null,
+      postcode: null,
+      unit: null
     }
   },
   {
@@ -62,7 +62,7 @@ export const data = [
       city: 'mountain view',
       state: 'ca',
       postcode: '94043',
-      unit: undefined
+      unit: null
     },
   },
   {
@@ -73,6 +73,7 @@ export const data = [
       city: 'denver',
       state: 'co',
       postcode: '80202',
+      unit: null
     }
   },
   {
@@ -83,7 +84,7 @@ export const data = [
       city: 'anytown',
       state: 'il',
       postcode: '60000',
-      unit: undefined
+      unit: null
     }
   }
 ];

@@ -130,202 +130,202 @@ describe('node-postal', () => {
 
 const expectedParseForZerodepAddress: Array<Record<string, any>> = [
   {
-    city: undefined,
+    city: null,
     countryIso2: 'ST',
     normalized: '100 E MAIN ST',
-    secondary: undefined,
+    secondary: null,
     source: '100 E Main St',
-    stateAbbr: undefined,
+    stateAbbr: null,
     street: '100 E MAIN',
-    zip: undefined,
-    zipExt: undefined
+    zip: null,
+    zipExt: null
   },
   {
-    city: undefined,
-    countryIso2: undefined,
+    city: null,
+    countryIso2: null,
     normalized: '1234 WEST 56TH AVE N',
-    secondary: undefined,
+    secondary: null,
     source: '1234 West 56th Ave N',
-    stateAbbr: undefined,
+    stateAbbr: null,
     street: '1234 W 56TH AVE N',
-    zip: undefined,
-    zipExt: undefined
+    zip: null,
+    zipExt: null
   },
   {
     city: 'PHOENIX',
-    countryIso2: undefined,
+    countryIso2: null,
     normalized: '5253 N 44TH DR PHOENIX AZ',
-    secondary: undefined,
+    secondary: null,
     source: '5253 N. 44th Dr., Phoenix, AZ',
     stateAbbr: 'AZ',
     street: '5253 N 44TH DR',
-    zip: undefined,
-    zipExt: undefined
+    zip: null,
+    zipExt: null
   },
   {
-    city: undefined,
-    countryIso2: undefined,
+    city: null,
+    countryIso2: null,
     normalized: '742 EVERGREEN TERRACE APT 2B',
     secondary: 'APT 2B',
     source: '742 Evergreen Terrace Apt 2B',
-    stateAbbr: undefined,
+    stateAbbr: null,
     street: '742 EVERGREEN TER',
-    zip: undefined,
-    zipExt: undefined
+    zip: null,
+    zipExt: null
   },
   {
-    city: undefined,
-    countryIso2: undefined,
+    city: null,
+    countryIso2: null,
     normalized: '1600 PENNSYLVANIA AVE NW STE 400',
     secondary: 'STE 400',
     source: '1600 Pennsylvania Ave NW Suite 400',
-    stateAbbr: undefined,
+    stateAbbr: null,
     street: '1600 PENNSYLVANIA AVE NW',
-    zip: undefined,
-    zipExt: undefined
+    zip: null,
+    zipExt: null
   },
   {
-    city: undefined,
-    countryIso2: undefined,
+    city: null,
+    countryIso2: null,
     normalized: '123 MAIN ST #4',
     secondary: '#4',
     source: '123 Main St #4',
-    stateAbbr: undefined,
+    stateAbbr: null,
     street: '123 MAIN ST',
-    zip: undefined,
-    zipExt: undefined
+    zip: null,
+    zipExt: null
   },
   {
     city: 'FARGO',
-    countryIso2: undefined,
+    countryIso2: null,
     normalized: 'PO BOX 123 FARGO ND 58102',
-    secondary: undefined,
+    secondary: null,
     source: 'PO Box 123, Fargo, ND 58102',
     stateAbbr: 'ND',
     street: 'PO BOX 123',
     zip: '58102',
-    zipExt: undefined
+    zipExt: null
   },
   {
     city: 'DALLAS',
-    countryIso2: undefined,
+    countryIso2: null,
     normalized: 'PO BOX 343 DALLAS TX',
-    secondary: undefined,
+    secondary: null,
     source: 'P O BOX 343, Dallas, TX',
     stateAbbr: 'TX',
     street: 'PO BOX 343',
-    zip: undefined,
-    zipExt: undefined
+    zip: null,
+    zipExt: null
   },
   {
     city: 'ADA',
-    countryIso2: undefined,
+    countryIso2: null,
     normalized: 'RR 2 BOX 152 ADA OK 74820',
     secondary: 'RR',
     source: 'RR 2 Box 152, Ada, OK 74820',
     stateAbbr: 'OK',
     street: '2 BOX 152',
     zip: '74820',
-    zipExt: undefined
+    zipExt: null
   },
   {
     city: 'ANYTOWN',
     countryIso2: 'US',
     normalized: '12-14 MAIN ST ANYTOWN USA',
-    secondary: undefined,
+    secondary: null,
     source: '12-14 Main St, Anytown, USA',
-    stateAbbr: undefined,
+    stateAbbr: null,
     street: '12-14 MAIN ST',
-    zip: undefined,
-    zipExt: undefined
+    zip: null,
+    zipExt: null
   },
   {
-    city: undefined,
-    countryIso2: undefined,
+    city: null,
+    countryIso2: null,
     normalized: '1600 AMPHITHEATRE PARKWAY MOUNTAIN VIEW CA 94043',
-    secondary: undefined,
+    secondary: null,
     source: '1600 Amphitheatre Parkway Mountain View CA 94043',
     stateAbbr: 'CA',
     street: '1600 AMPHITHEATRE PARKWAY MOUNTAIN VW',
     zip: '94043',
-    zipExt: undefined
+    zipExt: null
   },
   {
     city: 'DENVER',
-    countryIso2: undefined,
+    countryIso2: null,
     normalized: '123 MAIN ST DENVER CO 80202',
-    secondary: undefined,
+    secondary: null,
     source: '123 Main St,Denver,CO,80202',
     stateAbbr: 'CO',
     street: '123 MAIN ST',
     zip: '80202',
-    zipExt: undefined
+    zipExt: null
   },
   {
     city: 'BROOKLYN',
-    countryIso2: undefined,
+    countryIso2: null,
     normalized: '4567 ELM ST APT 5 BROOKLYN NY',
     secondary: 'APT 5',
     source: '4567 Elm St , Apt 5,Brooklyn, NY',
     stateAbbr: 'NY',
     street: '4567 ELM ST',
-    zip: undefined,
-    zipExt: undefined
+    zip: null,
+    zipExt: null
   },
   {
     city: 'HOUSE',
-    countryIso2: undefined,
+    countryIso2: null,
     normalized: '125 STATE ROUTE 50 MOUND HOUSE NV',
     secondary: 'STATE',
     source: '125 State Route 50, Mound House, NV',
     stateAbbr: 'NV',
     street: 'ROUTE 50 MOUND',
-    zip: undefined,
-    zipExt: undefined
+    zip: null,
+    zipExt: null
   },
   {
     city: 'MEMPHIS',
-    countryIso2: undefined,
+    countryIso2: null,
     normalized: 'C/O JANE SMITH 456 OAK RD MEMPHIS TN 38104',
     secondary: 'SMITH',
     source: 'c/o Jane Smith, 456 Oak Rd, Memphis, TN 38104',
     stateAbbr: 'TN',
     street: '456 OAK RD',
     zip: '38104',
-    zipExt: undefined
+    zipExt: null
   },
   {
     city: 'YORK',
-    countryIso2: undefined,
+    countryIso2: null,
     normalized: 'THE EMPIRE STATE BLDG 350 5TH AVE NEW YORK NY 10118',
     secondary: 'BLDG',
     source: 'The Empire State Building, 350 5th Ave, New York, NY 10118',
     stateAbbr: 'NY',
     street: '350 5TH AVE NEW',
     zip: '10118',
-    zipExt: undefined
+    zipExt: null
   },
   {
-    city: undefined,
-    countryIso2: undefined,
+    city: null,
+    countryIso2: null,
     normalized: '899 SOUTH COLUMBUS AVE MOUNT VERNON NY 10550 STE 102B',
     secondary: 'STE 102B',
     source: '899 South Columbus Ave, Mount Vernon, NY 10550 Suite 102B',
-    stateAbbr: undefined,
+    stateAbbr: null,
     street: '899 S COLUMBUS AVE MT',
     zip: '10550',
-    zipExt: undefined
+    zipExt: null
   },
   {
     city: 'ANYTOWN',
-    countryIso2: undefined,
+    countryIso2: null,
     normalized: '123 1/2 MAIN ST ANYTOWN IL 60000',
-    secondary: undefined,
+    secondary: null,
     source: '123 1/2 Main St, Anytown, IL 60000',
     stateAbbr: 'IL',
     street: '123 1/2 MAIN ST',
     zip: '60000',
-    zipExt: undefined
+    zipExt: null
   }
 ];
 

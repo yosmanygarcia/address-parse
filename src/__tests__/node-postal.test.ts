@@ -10,7 +10,7 @@ describe('node-postal', () => {
       const value = (data: Array<PostalResult>, key: string)=> {
         const item = data.find(d => d.component === key);
 
-        return item ? item.value : undefined;
+        return item ? item.value : null;
       }
 
       expect('House number', value(result, 'house_number'), parsed['house_number']);

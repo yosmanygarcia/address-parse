@@ -1,15 +1,16 @@
 export function parseAddress(address: string) {
-  let house_number: string | undefined = undefined;
-  let road: string | undefined = undefined;
-  let city: string | undefined = undefined;
-  let state: string | undefined = undefined;
-  let postcode: string | undefined = undefined;
-  let unit: string | undefined = undefined;
+  let house_number: string | null = null;
+  let road: string | null = null;
+  let city: string | null = null;
+  let state: string | null = null;
+  let postcode: string | null = null;
+  let unit: string | null = null;
 
   let addr = address.trim();
 
   // Extract unit (e.g., #4, Suite 102B, Apt 5)
   const unitMatch = addr.match(/(?:\s|,)(#\d+\w*|Suite\s*\w+|Apt\s*\w+|Unit\s*\w+)/i);
+
   if (unitMatch) {
     unit = unitMatch[1].toLowerCase();
     addr = addr.replace(unitMatch[0], '');
@@ -17,6 +18,11 @@ export function parseAddress(address: string) {
 
   // Split by commas
   let parts = addr.split(',').map(p => p.trim());
+
+  // Handle country 'USA' - remove it from parts
+  if (parts.length > 1 && parts[parts.length - 1].toLowerCase() === 'usa') {
+    parts = parts.slice(0, -1);
+  }
 
   // Handle addresses without commas (most common case in the examples)
   if (parts.length === 1) {
@@ -60,7 +66,7 @@ export function parseAddress(address: string) {
         const afterSuffix = middlePart.substr(suffixEndPos).trim();
         const cityStartMatch = afterSuffix.match(/^\s+([A-Za-z]+)/);
 
-        if (cityStartMatch && cityStartMatch.index !== undefined) {
+        if (cityStartMatch && cityStartMatch.index !== null) {
           // Extract road up to and including suffix
           road = middlePart.substring(0, suffixEndPos).trim().toLowerCase();
           // Everything after is city
@@ -133,16 +139,15 @@ export function parseAddress(address: string) {
         city,
         state,
         postcode,
-        unit: unit ?? undefined,
+        unit: unit ?? null,
       };
     }
   }
 
-  // Keep the existing logic for comma-separated addresses
-  // [rest of the code remains unchanged]
-
   const firstPart = parts[0];
+
   const hnRoadMatch = firstPart.match(/^([\d\-\/\s]+)\s+(.+)$/);
+
   if (hnRoadMatch) {
     house_number = hnRoadMatch[1].trim();
     road = hnRoadMatch[2].toLowerCase();
@@ -158,6 +163,7 @@ export function parseAddress(address: string) {
   const restStr = rest.join(', ');
 
   const cspMatch = restStr.match(/([A-Za-z\s]+)[, ]+([A-Za-z]{2})[, ]+(\d{5,})/);
+
   if (cspMatch) {
     city = cspMatch[1].trim().toLowerCase();
     state = cspMatch[2].trim().toLowerCase();
@@ -186,11 +192,11 @@ export function parseAddress(address: string) {
   }
 
   return {
-    house_number: house_number ?? undefined,
-    road: road ?? undefined,
-    city: city ?? undefined,
-    state: state ?? undefined,
-    postcode: postcode ?? undefined,
-    unit: unit ?? undefined,
+    house_number: house_number ?? null,
+    road: road ?? null,
+    city: city ?? null,
+    state: state ?? null,
+    postcode: postcode ?? null,
+    unit: unit ?? null,
   };
 }
