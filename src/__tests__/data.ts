@@ -86,5 +86,16 @@ export const data = [
       postcode: '60000',
       unit: null
     }
+  },
+  {
+    address: 'At the North front entrance to the County Courthouse, 700 Civic Center Drive West, Santa Ana, CA 92701',
+    parsed: {
+      house_number: '700',
+      road: 'civic center drive west',
+      city: 'santa ana',
+      state: 'ca',
+      postcode: '92701',
+      unit: null
+    }
   }
 ];

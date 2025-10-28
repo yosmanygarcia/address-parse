@@ -24,6 +24,18 @@ export function parseAddress(address: string) {
     parts = parts.slice(0, -1);
   }
 
+  // Find the part that starts with house number
+  let addressStartIndex = 0;
+  for (let i = 0; i < parts.length; i++) {
+    if (/^\d/.test(parts[i])) {
+      addressStartIndex = i;
+      break;
+    }
+  }
+
+  const firstPart = parts[addressStartIndex];
+  let rest = parts.slice(addressStartIndex + 1);
+
   // Handle addresses without commas (most common case in the examples)
   if (parts.length === 1) {
     // First extract the house number, state, and postcode which are more reliably formatted
@@ -144,8 +156,6 @@ export function parseAddress(address: string) {
     }
   }
 
-  const firstPart = parts[0];
-
   const hnRoadMatch = firstPart.match(/^([\d\-\/\s]+)\s+(.+)$/);
 
   if (hnRoadMatch) {
@@ -159,8 +169,7 @@ export function parseAddress(address: string) {
     }
   }
 
-  let rest = parts.slice(1);
-  const restStr = rest.join(', ');
+  let restStr = rest.join(', ');
 
   const cspMatch = restStr.match(/([A-Za-z\s]+)[, ]+([A-Za-z]{2})[, ]+(\d{5,})/);
 
