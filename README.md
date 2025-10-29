@@ -6,6 +6,8 @@ docker run -it --name my-node-app-container -e PORT=80 -p 80:80 my-node-app
 
 open localhost:80
 
+docker rm my-node-app-container
+
 ## Start again after stopping
 
 docker start -ai my-node-app-container
@@ -23,16 +25,32 @@ docker exec -it address_parse_node bash
 
 npm i
 
+docker-compose \
+-f arch/docker-compose.yml \
+-p address_parse stop
+
+docker-compose \
+-f arch/docker-compose.yml \
+-p address_parse rm
+
 # Tests
 
 ## node-postal
 
-npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/node-postal.test.ts
+docker exec -it address_parse_node npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/node-postal.test.ts
 
 ## zerodep-address
 
-npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/zerodep-address.test.ts
+docker exec -it address_parse_node npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/zerodep-address.test.ts
 
 ## custom
 
-npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/custom.test.ts
+docker exec -it address_parse_node npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/custom.test.ts
+
+# Tests from outside
+
+docker start -ai address_parse_node
+docker exec -it address_parse_node npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/custom.test.ts
+
+Execute tests using command: docker exec -it address_parse_node npx lb-mocha --allow-console-logs --require ts-node/register src/tests/custom.test.ts
+Then try to fix it on src/parse.ts and execute the tests again

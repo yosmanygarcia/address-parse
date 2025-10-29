@@ -97,5 +97,53 @@ export const data = [
       postcode: '92701',
       unit: null
     }
-  }
+  },
+  {
+    address: 'In the front of the flagpoles at the main entry area to the Placentia Civic Center 401-411 E. Chapman Ave. Placentia, CA',
+    parsed: {
+      house_number: '401-411',
+      road: 'e. chapman ave.',
+      city: 'placentia',
+      state: 'ca',
+      postcode: null,
+      unit: null
+    }
+  },
+  // Table AttomForeclosure, id 20
+  // auctionAddress: '100 The City Drive Orange Ca 92868'
+  // auctionHouseNumber: '100'
+  // auctionStreetName: 'The City Drive Orange Ca 92868'
+  {
+    address: '100 The City Drive Orange Ca 92868',
+    parsed: {
+      house_number: '100',
+      road: 'the city drive',
+      city: 'orange',
+      state: 'ca',
+      postcode: '92868',
+      unit: null
+    }
+  },
+  // Table AttomForeclosure, id 365
+  // auctionAddress: '400 Civic Center Plaza'
+  // auctionHouseNumber: '400'
+  // auctionStreetName: 'CIVIC CENTER'
+  // auctionSuffix: 'Plz'
+  // auctionCity: 'Pomona Ca'
+  // {
+  //   address: '400 Civic Center Plaza',
+  //   parts: {
+  //     house_number: '400',
+  //     road: 'CIVIC CENTER',
+  //     city: 'Pomona Ca'
+  //   },
+  //   parsed: {
+  //     house_number: '400',
+  //     road: 'civic center plaza',
+  //     city: 'pomona',
+  //     state: 'ca',
+  //     postcode: null,
+  //     unit: null
+  //   }
+  // }
 ];

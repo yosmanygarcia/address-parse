@@ -2,8 +2,6 @@ import {strict as assert} from 'assert';
 import postal from 'node-postal';
 import {addressParse} from '@zerodep/address';
 
-
-
 const expectedParseForNodePostal = [
   [
     {value: '100', component: 'house_number'},
