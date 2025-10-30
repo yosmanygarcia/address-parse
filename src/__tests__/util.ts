@@ -5,7 +5,7 @@ export function expect(
   expected: any,
   actual: any
 ) {
-  baseExpect(expected).to.equal(
+  baseExpect(expected).to.deepEqual(
     actual,
     `${key} is invalid: expected ${expected}, got ${actual}`
   );

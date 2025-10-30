@@ -3,7 +3,7 @@ import * as path from 'path';
 import postal from 'node-postal';
 import {addressParse} from '@zerodep/address';
 import * as addresser from "addresser";
-import {parseAddress} from './parse'
+import {parseAddress} from './custom'
 
 class ApiController {
   @post('/api')

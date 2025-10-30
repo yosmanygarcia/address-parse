@@ -1,6 +1,6 @@
-import {parseAddress} from '../parse';
-import {expect} from './util'
+import {expect} from '../util'
 import {data} from './data';
+import {parseAddress} from '../../custom';
 
 describe('custom', () => {
   data.forEach(({address, parsed}) => {

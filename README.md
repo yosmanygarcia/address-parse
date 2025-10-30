@@ -37,20 +37,20 @@ docker-compose \
 
 ## node-postal
 
-docker exec -it address_parse_node npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/node-postal.test.ts
+docker exec -it address_parse_node npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/libs/node-postal.test.ts
 
 ## zerodep-address
 
-docker exec -it address_parse_node npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/zerodep-address.test.ts
+docker exec -it address_parse_node npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/libs/zerodep-address.test.ts
 
 ## custom
 
-docker exec -it address_parse_node npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/custom.test.ts
+docker exec -it address_parse_node npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/libs/custom.test.ts
 
 # Tests from outside
 
 docker start -ai address_parse_node
-docker exec -it address_parse_node npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/custom.test.ts
+docker exec -it address_parse_node npx lb-mocha --allow-console-logs --require ts-node/register src/__tests__/internal.test.ts
 
-Execute tests using command: docker exec -it address_parse_node npx lb-mocha --allow-console-logs --require ts-node/register src/tests/custom.test.ts
-Then try to fix it on src/parse.ts and execute the tests again
+Execute tests using command: docker exec -it address_parse_node npx lb-mocha --allow-console-logs --require ts-node/register src/tests/internal.test.ts
+Then try to fix it on src/internal.ts and execute the tests again

@@ -1,5 +1,5 @@
 import {addressParse} from '@zerodep/address';
-import {expect} from './util'
+import {expect} from '../util'
 import {data} from './data';
 
 describe('@zerodep/address', () => {

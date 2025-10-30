@@ -1,5 +1,5 @@
 import postal, {PostalResult} from 'node-postal';
-import {expect} from './util'
+import {expect} from '../util'
 import {data} from './data';
 
 describe('node-postal', () => {
